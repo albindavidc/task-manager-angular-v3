@@ -26,7 +26,7 @@ jobs:
 
     # Step 4: Build the Angular application
     - name: Build the Angular app
-      run: npm run build -- --configuration production --base-href /task-manager-angular-v3/ # Replace <repository-name> with your repo name
+      run: npm run build --configuration production --base-href /task-manager-angular-v3/ # Replace <repository-name> with your repo name
 
     # Step 5: Deploy to GitHub Pages
     - name: Deploy to GitHub Pages
