@@ -16,21 +16,27 @@ export class TasksService {
     localStorage.setItem(this.storageKey, JSON.stringify(tasks));
   }
 
-  addTasks(task: Task): void {
+  addTasks(taskData: { title: string; description: string }) {
     const tasks = this.getTasks();
-    tasks.push(task);
+    const newTaskData: Task = {
+      id: Math.random().toString(),
+      title: taskData.title,
+      description: taskData.description,
+      completed: false,
+    };
+    tasks.push(newTaskData);
     this.saveTasks(tasks);
   }
 
-  updateTasks(updateTask: Task): void {
+  updateTasks(taskId: string, newStatus: boolean): void {
     const tasks = this.getTasks().map((task) =>
-      task.id === updateTask.id ? updateTask : task
+      task.id === taskId ? { ...task, completed: newStatus } : task
     );
     this.saveTasks(tasks);
   }
 
-  deleteTasks(taskId: string):void{
-    const tasks = this.getTasks().filter((task) => task.id !== taskId)
+  deleteTasks(taskId: string): void {
+    const tasks = this.getTasks().filter((task) => task.id !== taskId);
     this.saveTasks(tasks);
   }
 }
