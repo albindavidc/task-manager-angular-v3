@@ -1,6 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { TasksService } from '../task.service';
 import { TaskItemComponent } from './task-item/task-item.component';
+import { TasksService } from '../task.service';
 
 @Component({
   selector: 'app-tasks-list',
@@ -10,7 +10,7 @@ import { TaskItemComponent } from './task-item/task-item.component';
 })
 export class TasksListComponent {
   private tasksService = inject(TasksService);
-  private selectedFilter = signal<string>('all');
+  selectedFilter = signal<string>('all');
 
   tasks = computed(() => {
     switch (this.selectedFilter()) {
@@ -22,7 +22,7 @@ export class TasksListComponent {
         return this.tasksService
           .getTasks()
           .filter((task) => task.status === 'IN_PROGRESS');
-      case 'completed':
+      case 'done':
         return this.tasksService
           .getTasks()
           .filter((task) => task.status === 'DONE');
@@ -33,5 +33,9 @@ export class TasksListComponent {
 
   onChangeTasksFilter(filter: string) {
     this.selectedFilter.set(filter);
+  }
+
+  onDeleteTask(taskId: string): void {
+    this.tasksService.deleteTasks(taskId);
   }
 }

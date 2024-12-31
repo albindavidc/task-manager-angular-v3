@@ -1,7 +1,14 @@
-import { Component, computed, inject, input } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Task, TaskStatus } from '../../task.model';
 import { TasksService } from '../../task.service';
+import { Task, TaskStatus } from '../../task.model';
 
 @Component({
   selector: 'app-task-item',
@@ -12,9 +19,10 @@ import { TasksService } from '../../task.service';
 export class TaskItemComponent {
   private tasksService = inject(TasksService);
   task = input.required<Task>();
+  @Output() delete = new EventEmitter<string>();
 
-  taskStatus = computed(() =>{
-    switch(this.task().status){
+  taskStatus = computed(() => {
+    switch (this.task().status) {
       case 'OPEN':
         return 'Open';
       case 'IN_PROGRESS':
@@ -24,12 +32,12 @@ export class TaskItemComponent {
       default:
         return 'Open';
     }
-  })
+  });
 
-  onChangeTaskStatus(taskId: string, status: string){
+  onChangeTaskStatus(taskId: string, status: string) {
     let newStatus: TaskStatus = 'OPEN';
 
-    switch(status) {
+    switch (status) {
       case 'open':
         newStatus = 'OPEN';
         break;
@@ -43,5 +51,9 @@ export class TaskItemComponent {
         break;
     }
     this.tasksService.updateTasks(taskId, newStatus);
+  }
+
+  deleteTask(): void {
+    this.delete.emit(this.task().id);
   }
 }

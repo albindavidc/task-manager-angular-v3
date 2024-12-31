@@ -1,13 +1,13 @@
-<form (ngSubmit)="onAddTask(title.value, description.value)" #form>
-    <p>
-        <label for="title">Title</label>
-        <input type="text" name="title" id="title" #title/>
-    </p>
-    <p>
-        <label for="description">Description</label>
-        <textarea name="description" id="description" #description></textarea>
-    </p>
-    <p id="actions">
-        <button>Add Task</button>
-    </p>
+<form (ngSubmit)="onAddTask(title.value, description.value)" #form="ngForm">
+  <p>
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" ngModel #title="ngModel" />
+  </p>
+  <p>
+    <label for="description">Description</label>
+    <textarea name="description" id="description" ngModel #description="ngModel"></textarea>
+  </p>
+  <p id="actions">
+    <button>Add Task</button>
+  </p>
 </form>

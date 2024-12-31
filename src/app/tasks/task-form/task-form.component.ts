@@ -1,19 +1,23 @@
-import { Component, ElementRef, viewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { TasksService } from '../task.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-task-form',
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './task-form.component.html',
   styleUrl: './task-form.component.css',
 })
 export class TaskFormComponent {
-  private formEl = viewChild<ElementRef<HTMLFormElement>>('form');
+  @ViewChild('form', { static: false }) formEl!: NgForm;
 
   constructor(private taskService: TasksService) {}
 
   onAddTask(title: string, description: string) {
     this.taskService.addTasks({ title, description });
-    this.formEl()?.nativeElement.reset();
+    if (this.formEl) {
+      this.formEl.reset();
+    }
   }
 }
