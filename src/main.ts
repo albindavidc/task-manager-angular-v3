@@ -6,5 +6,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 
 bootstrapApplication(AppComponent, {
   ...appConfig,
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, provideAnimationsAsync()],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    provideAnimationsAsync(),
+  ],
 }).catch((err) => console.error(err));

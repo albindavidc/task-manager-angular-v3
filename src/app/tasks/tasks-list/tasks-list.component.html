@@ -12,10 +12,9 @@
 
 <ul>
   @for (task of tasks(); track task) {
-    <li>
-      <app-task-item [task]="task" (delete)="onDeleteTask($event)"/>
-      
-    </li>
+  <li>
+    <app-task-item [task]="task" (delete)="onDeleteTask($event)" />
+  </li>
 
   }
 </ul>
