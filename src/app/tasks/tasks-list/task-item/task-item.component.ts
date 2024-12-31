@@ -54,6 +54,8 @@ export class TaskItemComponent {
   }
 
   deleteTask(): void {
+    console.log(`Task ID to delete: ${this.task().id}`);
+
     this.delete.emit(this.task().id);
   }
 }
