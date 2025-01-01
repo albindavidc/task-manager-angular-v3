@@ -11,7 +11,7 @@ export const routes: Routes = [
     children: [{ path: 'new', component: TaskFormComponent }],
   },
   { path: 'tasks/new', component: TaskFormComponent },
-  { path: '**', redirectTo: '/tasks' },
+  { path: '**', redirectTo: '/tasks/new' },
 ];
 
 @NgModule({
