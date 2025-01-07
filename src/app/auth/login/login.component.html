@@ -1,1 +1,22 @@
-<p>login works!</p>
+<div>
+  <h1>Login</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <label for="email">Email</label>
+    <input type="email" formControlName="email" />
+    <div *ngIf="loginForm.get(email)?.valid && loginForm.get(email)?.touched">
+      Kindly enter a valid email id
+    </div>
+
+    <label for="password">Password</label>
+    <input type="password" formControlName="password" />
+    <div
+      *ngIf="loginForm.get(password)?.valid && loginForm.get(password)?.touched"
+    >
+      Kindly enter a valid password
+    </div>
+
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+  </form>
+
+  <p>{{ message }}</p>
+</div>
