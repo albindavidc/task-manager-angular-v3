@@ -1,9 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-timer',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './timer.component.html',
   styleUrl: './timer.component.css',
 })
@@ -14,7 +16,7 @@ export class TimerComponent implements OnDestroy {
   isRunning: boolean = false;
 
   startTimer(): void {
-    if (!this.isRunning && this.remainingTime <= 0) {
+    if (!this.isRunning && this.remainingTime > 0) {
       this.isRunning = true;
       this.timerSubscription = interval(1000).subscribe(() => {
         if (this.remainingTime > 0) {
