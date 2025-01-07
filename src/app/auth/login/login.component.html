@@ -3,14 +3,18 @@
   <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
     <label for="email">Email</label>
     <input type="email" formControlName="email" />
-    <div *ngIf="loginForm.get(email)?.valid && loginForm.get(email)?.touched">
+    <div
+      *ngIf="loginForm.get('email')?.valid && loginForm.get('email')?.touched"
+    >
       Kindly enter a valid email id
     </div>
 
     <label for="password">Password</label>
     <input type="password" formControlName="password" />
     <div
-      *ngIf="loginForm.get(password)?.valid && loginForm.get(password)?.touched"
+      *ngIf="
+        loginForm.get('password')?.valid && loginForm.get('password')?.touched
+      "
     >
       Kindly enter a valid password
     </div>
@@ -19,4 +23,6 @@
   </form>
 
   <p>{{ message }}</p>
+
+  <a routerLink="/signup">Signup</a>
 </div>

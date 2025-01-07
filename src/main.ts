@@ -5,12 +5,13 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
 import { routes } from './app/app.routes';
+import { AuthService } from './app/auth/auth.service';
 
 bootstrapApplication(AppComponent, {
   ...appConfig,
   providers: [
     provideRouter(routes),
-    
+    AuthService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     provideAnimationsAsync(),
   ],
