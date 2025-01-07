@@ -8,5 +8,6 @@ export const routes: Routes = [
     component: TasksComponent,
     children: [{ path: 'new', component: TaskFormComponent }],
   },
+
   { path: '**', redirectTo: '/tasks' },
 ];
