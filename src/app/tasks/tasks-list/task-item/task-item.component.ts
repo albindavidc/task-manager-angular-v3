@@ -9,17 +9,21 @@ import {
 import { FormsModule } from '@angular/forms';
 import { TasksService } from '../../task.service';
 import { Task, TaskStatus } from '../../task.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-task-item',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './task-item.component.html',
   styleUrl: './task-item.component.css',
 })
 export class TaskItemComponent {
   private tasksService = inject(TasksService);
+
   task = input.required<Task>();
   @Output() delete = new EventEmitter<string>();
+
+  isEditing: boolean = false;
 
   taskStatus = computed(() => {
     switch (this.task().status) {
@@ -57,5 +61,11 @@ export class TaskItemComponent {
     console.log(`Task ID to delete: ${this.task().id}`);
 
     this.delete.emit(this.task().id);
+  }
+
+  editTheForm() {}
+
+  cancelEditing(){
+
   }
 }

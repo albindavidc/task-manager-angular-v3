@@ -6,10 +6,40 @@
   }"
 >
   <header>
-    <h3>{{ task().title }}</h3>
-    <p>{{ taskStatus() }}</p>
+    <ng-container *ngIf="!isEditing; else formEdit">
+      <h3>{{ task().title }}</h3>
+      <p>{{ taskStatus() }}</p>
+      <p>{{ task().description }}</p>
+    </ng-container>
+
+    <ng-template #formEdit>
+      <form #editForm="ngForm" (ngSubmit)="editTheForm()">
+        <p>
+          <label for="title">Title</label>
+          <input
+            type="title"
+            id="title"
+            name="title"
+            [(ngModel)]="task().title"
+            required
+          />
+        </p>
+        <p>
+          <label for="description">Description:</label>
+          <input
+            type="description"
+            id="title"
+            name="title"
+            [(ngModel)]="task().description"
+            required
+          />
+        </p>
+        <button type="submit" [disabled]="editForm.invalid">Save</button>
+        <button type="button" (click)="cancelEditing()">Cancel</button>
+      </form>
+    </ng-template>
   </header>
-  <p>{{ task().description }}</p>
+
   <form (ngSubmit)="onChangeTaskStatus(task().id, status.value)">
     <select #status>
       <option value="open" [selected]="task().status === 'OPEN'">Open</option>
