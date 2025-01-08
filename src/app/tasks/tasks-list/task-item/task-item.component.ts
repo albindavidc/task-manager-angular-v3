@@ -24,6 +24,7 @@ export class TaskItemComponent {
   @Output() delete = new EventEmitter<string>();
 
   isEditing: boolean = false;
+  editTask: Task = { id: '', title: '', description: '', status: 'OPEN' };
 
   taskStatus = computed(() => {
     switch (this.task().status) {
@@ -63,9 +64,21 @@ export class TaskItemComponent {
     this.delete.emit(this.task().id);
   }
 
-  editTheForm() {}
+  startEditing() {
+    this.isEditing = true;
+    this.editTask = { ...this.task() };
+  }
 
-  cancelEditing(){
+  editTheForm() {
+    if(this.editTask.title.trim()){
+      this.tasksService.updateEditTask(this.task().id, {
+        title: this.editTask.title,
+        description: this.editTask.description
+      })
+    }
+  }
 
+  cancelEditing() {
+    this.isEditing = false;
   }
 }

@@ -9,6 +9,19 @@ export class TasksService {
 
   allTasks = this.tasks.asReadonly();
 
+  updateEditTask(taskId: string, update: Partial<Task>) {
+    const updateTasks = this.tasks().map((task) => {
+      if (task.id === taskId) {
+        return {
+          ...task,
+          ...update,
+        };
+      }
+      return task;
+    });
+    this.tasks.set(updateTasks);
+  }
+
   getTasks(): Task[] {
     return [...this.tasks()];
   }
