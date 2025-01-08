@@ -1,8 +1,9 @@
 <div class="calculator">
-
-    <div class="display previous-display">
-        {{ previousValue || ' ' }}
-      </div>
+  <div class="display">
+    <div class="display-input">
+      {{ previousValue || " " }}
+    </div>
+  </div>
 
   <app-display
     [value]="displayedValue"
