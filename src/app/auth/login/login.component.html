@@ -1,28 +1,63 @@
-<div>
-  <h1>Login</h1>
-  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-    <label for="email">Email</label>
-    <input type="email" formControlName="email" />
-    <div
-      *ngIf="loginForm.get('email')?.valid && loginForm.get('email')?.touched"
-    >
-      Kindly enter a valid email id
-    </div>
+<div class="login-container">
+  <div class="login-card">
+    <h1>Login</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" novalidate>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form-input"
+          [ngClass]="{
+            invalid:
+              loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+          }"
+        />
+        <div
+          *ngIf="
+            loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+          "
+          class="error-message"
+        >
+          Kindly enter a valid email id
+        </div>
+      </div>
 
-    <label for="password">Password</label>
-    <input type="password" formControlName="password" />
-    <div
-      *ngIf="
-        loginForm.get('password')?.valid && loginForm.get('password')?.touched
-      "
-    >
-      Kindly enter a valid password
-    </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          class="form-input"
+          [ngClass]="{
+            invalid:
+              loginForm.get('password')?.invalid &&
+              loginForm.get('password')?.touched
+          }"
+        />
+        <div
+          *ngIf="
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+          "
+          class="error-message"
+        >
+          Kindly enter a valid password
+        </div>
+      </div>
 
-    <button type="submit" [disabled]="loginForm.invalid">Login</button>
-  </form>
+      <button
+        type="submit"
+        [disabled]="loginForm.invalid"
+        class="submit-button"
+      >
+        Login
+      </button>
+    </form>
 
-  <p>{{ message }}</p>
-
-  <a routerLink="/">Signup</a>
+    <p class="message">{{ message }}</p>
+    <a routerLink="/" class="signup-link">Don't have an account? Signup</a>
+  </div>
 </div>

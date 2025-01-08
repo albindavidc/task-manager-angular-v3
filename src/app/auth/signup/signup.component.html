@@ -1,31 +1,66 @@
-<div>
-  <h1>Signup</h1>
-  <form #signupForm="ngForm" (ngSubmit)="onSignup(signupForm)">
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" ngModel required email />
-    <div *ngIf="signupForm.submitted && !signupForm.form.get('email')?.valid">
-      Kindly enter a valid email
-    </div>
+<div class="signup-container">
+  <div class="signup-card">
+    <h1>Signup</h1>
+    <form #signupForm="ngForm" (ngSubmit)="onSignup(signupForm)" novalidate>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          ngModel
+          required
+          email
+          class="form-input"
+          [ngClass]="{
+            invalid:
+              signupForm.submitted && !signupForm.form.get('email')?.valid
+          }"
+        />
+        <div
+          *ngIf="signupForm.submitted && !signupForm.form.get('email')?.valid"
+          class="error-message"
+        >
+          Kindly enter a valid email
+        </div>
+      </div>
 
-    <label for="password">Password:</label>
-    <input
-      type="password"
-      id="password"
-      name="password"
-      ngModel
-      required
-      minlength="6"
-    />
-    <div
-      *ngIf="signupForm.submitted && !signupForm.form.get('password')?.valid"
-    >
-      Kindly enter a valid password. Password must be atleast 6 letters long
-    </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          ngModel
+          required
+          minlength="6"
+          class="form-input"
+          [ngClass]="{
+            invalid:
+              signupForm.submitted && !signupForm.form.get('password')?.valid
+          }"
+        />
+        <div
+          *ngIf="
+            signupForm.submitted && !signupForm.form.get('password')?.valid
+          "
+          class="error-message"
+        >
+          Kindly enter a valid password. Password must be at least 6 letters
+          long
+        </div>
+      </div>
 
-    <button type="submit" [disabled]="signupForm.invalid">Signup</button>
-  </form>
+      <button
+        type="submit"
+        [disabled]="signupForm.invalid"
+        class="submit-button"
+      >
+        Signup
+      </button>
+    </form>
 
-  <p>{{ message }}</p>
-
+    <p class="message">{{ message }}</p>
+    <a routerLink="/login" class="login-link">Already have an account? Login</a>
+  </div>
 </div>
-<a routerLink="/login">Login</a>
