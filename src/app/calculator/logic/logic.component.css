@@ -1,3 +1,30 @@
+.blue {
+  background-color: blue !important;
+  color: white !important;
+}
+
+.green {
+  background-color: green !important;
+  color: white !important;
+}
+
+.red {
+  background-color: red !important;
+  color: white !important;
+}
+
+.yellow {
+  background-color: yellow !important;
+  color: black !important;
+}
+
+.purple {
+  background-color: purple !important;
+  color: white !important;
+}
+
+
+
 .display {
   height: 50px;
   background-color: black;

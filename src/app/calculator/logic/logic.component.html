@@ -33,9 +33,11 @@
 
     <div class="row">
       <button (click)="onDigitClick('0')">0</button
-      ><button (click)="onClear()">C</button
-      ><button (click)="onEqualsTo()">=</button
-      ><button (click)="onOperationClick('+')">+</button>
+      ><button (click)="onClear()">C</button>
+      <button (click)="changeColorAndEqualTo()" [ngClass]="changeColorClass">
+        =
+      </button>
+      <button (click)="onOperationClick('+')">+</button>
     </div>
   </div>
 </div>
