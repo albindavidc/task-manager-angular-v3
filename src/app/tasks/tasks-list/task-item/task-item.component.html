@@ -47,26 +47,29 @@
 
   <ng-template #formEdit>
     <form #editForm="ngForm" (ngSubmit)="editTheForm()">
-      <p>
-        <label for="editTask">Title</label>
-        <input
-          type="text"
-          id="editText"
-          name="editText"
-          [(ngModel)]="editTask.title"
-          required
-        />
-      </p>
-      <p>
-        <label for="editDescription">Description:</label>
-        <textarea
-          id="editDescription"
-          name="editDescription"
-          [(ngModel)]="editTask.description"
-          required
-        >
-        </textarea>
-      </p>
+      <div style="display: flex; align-items: baseline;">
+        <p style="padding-right: 10px;">
+          <label for="editTask">Title:</label>
+          <input
+            type="text"
+            id="editText"
+            name="editText"
+            [(ngModel)]="editTask.title"
+            required
+          />
+        </p>
+        <p>
+          <label for="editDescription">Description:</label>
+          <textarea
+            id="editDescription"
+            name="editDescription"
+            [(ngModel)]="editTask.description"
+            required
+          >
+          </textarea>
+        </p>
+
+      </div>
       <button class="editButtons" type="submit" [disabled]="editForm.invalid">
         Save
       </button>

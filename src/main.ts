@@ -12,7 +12,7 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
     AuthService,
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    // { provide: LocationStrategy, useClass: HashLocationStrategy },
     provideAnimationsAsync(),
   ],
 }).catch((err) => console.error(err));
