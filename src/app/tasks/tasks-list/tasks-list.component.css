@@ -6,6 +6,11 @@
   background-color: #44433f;
 }
 
+.main-container{
+  width: 100%;
+  height: 85vh;
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -19,6 +24,8 @@ h2 {
   font-size: 1rem;
   text-transform: uppercase;
 }
+
+
 
 select {
   font: inherit;
@@ -36,7 +43,7 @@ ul {
   flex-direction: column;
   list-style: none;
   margin: 0;
-  padding: 0.5rem;
+  padding: 2rem;
 }
 
 /*search result*/
@@ -47,7 +54,7 @@ ul {
 .search-box {
   position: relative;
   width: 100%;
-  max-width: 500px;
+  max-width: 70%;
   margin: 0 auto;
 }
 

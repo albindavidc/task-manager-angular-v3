@@ -5,50 +5,58 @@
     'status-done': task().status === 'DONE'
   }"
 >
-  <ng-container *ngIf="!isEditing; else formEdit">
-    <header>
-      <h3>{{ task().title }}</h3>
-      <p>{{ taskStatus() }}</p>
-      <button class="editButtons" (click)="startEditing()">Edit</button>
-    </header>
+  <ng-container *ngIf="!isEditing; else formEdit" >
+    <div class="buttons-container">
 
-    <p>{{ task().description }}</p>
-    <form (ngSubmit)="onChangeTaskStatus(task().id, status.value)">
       <div>
-        <div>
-          <p style="padding-bottom: 10px">
-            <button class="editButtons" (click)="deleteTask()">Delete</button>
-          </p>
-        </div>
-        <div style="display: flex; align-items: center">
-          <div style="padding-right: 10px">
-            <select #status>
-              <option value="open" [selected]="task().status === 'OPEN'">
-                Open
-              </option>
-              <option
-                value="in-progress"
-                [selected]="task().status === 'IN_PROGRESS'"
-              >
-                In-Progress
-              </option>
-              <option value="done" [selected]="task().status === 'DONE'">
-                Completed
-              </option>
-            </select>
-          </div>
-          <p>
-            <button class="editButtons">Change Status</button>
-          </p>
-        </div>
+        <header>
+          <h3>{{ task().title }}</h3>
+          <p>{{ taskStatus() }}</p>
+          <button class="editButtons" (click)="startEditing()">Edit</button>
+        </header>
+  
+        <p>{{ task().description }}</p>
       </div>
-    </form>
+  
+      <div>
+        <form (ngSubmit)="onChangeTaskStatus(task().id, status.value)">
+          <div>
+            <div>
+              <p style="padding-bottom: 10px">
+                <button class="editButtons" (click)="deleteTask()">Delete</button>
+              </p>
+            </div>
+            <div style="display: flex; align-items: center">
+              <div style="padding-right: 10px">
+                <select #status>
+                  <option value="open" [selected]="task().status === 'OPEN'">
+                    Open
+                  </option>
+                  <option
+                    value="in-progress"
+                    [selected]="task().status === 'IN_PROGRESS'"
+                  >
+                    In-Progress
+                  </option>
+                  <option value="done" [selected]="task().status === 'DONE'">
+                    Completed
+                  </option>
+                </select>
+              </div>
+              <p>
+                <button class="editButtons">Change Status</button>
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </ng-container>
 
   <ng-template #formEdit>
     <form #editForm="ngForm" (ngSubmit)="editTheForm()">
-      <div style="display: flex; align-items: baseline;">
-        <p style="padding-right: 10px;">
+      <div style="display: flex; align-items: baseline">
+        <p style="padding-right: 10px">
           <label for="editTask">Title:</label>
           <input
             type="text"
@@ -68,7 +76,6 @@
           >
           </textarea>
         </p>
-
       </div>
       <button class="editButtons" type="submit" [disabled]="editForm.invalid">
         Save

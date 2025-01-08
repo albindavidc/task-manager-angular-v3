@@ -1,63 +1,70 @@
-<header>
-  <h2>My Tasks</h2>
-  <p>
-    <select (change)="onChangeTasksFilter(filter.value)" #filter>
-      <option value="all">All</option>
-      <option value="open">Open</option>
-      <option value="in-progress">In-Progress</option>
-      <option value="done">Completed</option>
-    </select>
-  </p>
-</header>
+<div class="main-container">
+  <header>
+    <h2>My Tasks</h2>
+    <p>
+      <select (change)="onChangeTasksFilter(filter.value)" #filter>
+        <option value="all">All</option>
+        <option value="open">Open</option>
+        <option value="in-progress">In-Progress</option>
+        <option value="done">Completed</option>
+      </select>
+    </p>
+  </header>
 
-<!-- <ul>
+  <!-- <ul>
   @for (task of tasks(); track task) {
   <li>
     <app-task-item [task]="task" (delete)="onDeleteTask($event)" />
   </li>
 
   }
-</ul> -->
+  </ul> -->
 
-<div class="search-container">
-  <div class="search-box">
-    <input
-      type="text"
-      [value]="searchQuery()"
-      (input)="onSearch($event)"
-      placeholder="Search tasks..."
-      class="search-input"
-    />
-    @if (searchQuery()) {
-    <button (click)="onClear()" class="clear-button" aria-label="Clear search">
-      ✕
-    </button>
-    }
-  </div>
-
-  @if (searchQuery()) {
-  <p class="search-results">
-    Found {{ filteredTask().length }}
-    {{ filteredTask().length === 1 ? "result" : "results" }}
-  </p>
-  }
-</div>
-
-<ul>
-
-  <div class="tasks-list">
-    @if (filteredTask().length > 0) { @for (task of filteredTask(); track task.id)
-    {
-    <app-task-item [task]="task" (delete)="onDeleteTask($event)" />
-    } } @else {
-  
-    <div class="no-results">
+  <div class="search-container">
+    <div class="search-box">
+      <input
+        type="text"
+        [value]="searchQuery()"
+        (input)="onSearch($event)"
+        placeholder="Search tasks..."
+        class="search-input"
+      />
       @if (searchQuery()) {
-      <p>No tasks found matching "{{ searchQuery() }}"</p>
-      } @else {
-      <p>No tasks available. Create your first task!</p>
+      <button
+        (click)="onClear()"
+        class="clear-button"
+        aria-label="Clear search"
+      >
+        ✕
+      </button>
       }
     </div>
+
+    @if (searchQuery()) {
+    <p class="search-results">
+      Found {{ filteredTask().length }}
+      {{ filteredTask().length === 1 ? "result" : "results" }}
+    </p>
     }
   </div>
-</ul>
+
+  <ul>
+    <div class="tasks-list">
+      @if (filteredTask().length > 0) { @for (task of filteredTask(); track
+      task.id) {
+      <div style="padding-bottom: 10px">
+        <app-task-item [task]="task" (delete)="onDeleteTask($event)" />
+      </div>
+      } } @else {
+
+      <div class="no-results">
+        @if (searchQuery()) {
+        <p>No tasks found matching "{{ searchQuery() }}"</p>
+        } @else {
+        <p>No tasks available. Create your first task!</p>
+        }
+      </div>
+      }
+    </div>
+  </ul>
+</div>
