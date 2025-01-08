@@ -14,25 +14,35 @@
 
     <p>{{ task().description }}</p>
     <form (ngSubmit)="onChangeTaskStatus(task().id, status.value)">
-      <select #status>
-        <option value="open" [selected]="task().status === 'OPEN'">Open</option>
-        <option
-          value="in-progress"
-          [selected]="task().status === 'IN_PROGRESS'"
-        >
-          In-Progress
-        </option>
-        <option value="done" [selected]="task().status === 'DONE'">
-          Completed
-        </option>
-      </select>
-      <p>
-        <button class="editButtons">Change Status</button>
-      </p>
+      <div>
+        <div>
+          <p style="padding-bottom: 10px">
+            <button class="editButtons" (click)="deleteTask()">Delete</button>
+          </p>
+        </div>
+        <div style="display: flex; align-items: center">
+          <div style="padding-right: 10px">
+            <select #status>
+              <option value="open" [selected]="task().status === 'OPEN'">
+                Open
+              </option>
+              <option
+                value="in-progress"
+                [selected]="task().status === 'IN_PROGRESS'"
+              >
+                In-Progress
+              </option>
+              <option value="done" [selected]="task().status === 'DONE'">
+                Completed
+              </option>
+            </select>
+          </div>
+          <p>
+            <button class="editButtons">Change Status</button>
+          </p>
+        </div>
+      </div>
     </form>
-    <p>
-      <button class="editButtons" (click)="deleteTask()">Delete</button>
-    </p>
   </ng-container>
 
   <ng-template #formEdit>
