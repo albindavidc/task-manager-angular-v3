@@ -11,7 +11,9 @@ import { CommonModule } from '@angular/common';
 })
 export class TasksListComponent {
   private tasksService = inject(TasksService);
+
   selectedFilter = signal<string>('all');
+  searchQuery = signal<string>('');
 
   tasks = computed(() => {
     switch (this.selectedFilter()) {
@@ -40,5 +42,19 @@ export class TasksListComponent {
     console.log(`Deleting task with ID: ${taskId}`);
 
     this.tasksService.deleteTasks(taskId);
+  }
+
+  /**
+   * Search Feature
+   */
+  onSearch(event: Event) {
+    const query = (event.target as HTMLInputElement).value;
+    this.searchQuery.set(query);
+    this.tasksService.updateSearchQuery(query);
+  }
+
+  onClear(){
+    this.searchQuery.set('');
+    this.tasksService.clearSearchQuery();
   }
 }

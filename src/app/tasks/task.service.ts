@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { Task, TaskStatus } from './task.model';
 
 @Injectable({
@@ -6,21 +6,9 @@ import { Task, TaskStatus } from './task.model';
 })
 export class TasksService {
   tasks = signal<Task[]>([]);
+  searchQuery = signal<string>('');
 
   allTasks = this.tasks.asReadonly();
-
-  updateEditTask(taskId: string, update: Partial<Task>) {
-    const updateTasks = this.tasks().map((task) => {
-      if (task.id === taskId) {
-        return {
-          ...task,
-          ...update,
-        };
-      }
-      return task;
-    });
-    this.tasks.set(updateTasks);
-  }
 
   getTasks(): Task[] {
     return [...this.tasks()];
@@ -49,5 +37,43 @@ export class TasksService {
 
   deleteTasks(taskId: string): void {
     this.tasks.set(this.tasks().filter((task) => task.id !== taskId));
+  }
+
+  updateEditTask(taskId: string, update: Partial<Task>) {
+    const updateTasks = this.tasks().map((task) => {
+      if (task.id === taskId) {
+        return {
+          ...task,
+          ...update,
+        };
+      }
+      return task;
+    });
+    this.tasks.set(updateTasks);
+  }
+
+  /**
+   * Search feature
+   */
+  filteredTask = computed(() => {
+    let query = this.searchQuery().toLowerCase().trim();
+    let tasks = this.tasks();
+
+    if (!query) {
+      return tasks;
+    }
+
+    return tasks.filter((task) => {
+      task.title.toLowerCase().includes(query) ||
+        task.description.toLowerCase().includes(query);
+    });
+  });
+
+  updateSearchQuery(query: string) {
+    this.searchQuery.set(query);
+  }
+
+  clearSearchQuery() {
+    this.searchQuery.set('');
   }
 }
