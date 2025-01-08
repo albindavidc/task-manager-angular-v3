@@ -6,8 +6,8 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { TimerComponent } from './timer/timer.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/signup', pathMatch: 'full' },
-  { path: 'signup', component: SignupComponent },
+  // { path: '', redirectTo: '/signup', pathMatch: 'full' },
+  { path: '', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: TasksComponent },
   { path: 'timer', component: TimerComponent },
