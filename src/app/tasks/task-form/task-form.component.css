@@ -11,7 +11,7 @@ label {
   display: block;
   margin-bottom: 0.15rem;
   font-weight: bold;
-  color: #f2e090;
+  color: #c29e00;
 }
 
 input,
@@ -42,5 +42,5 @@ button {
 
 button:hover,
 button:active {
-  background-color: #f3d861;
+  background-color: #c29e00;
 }

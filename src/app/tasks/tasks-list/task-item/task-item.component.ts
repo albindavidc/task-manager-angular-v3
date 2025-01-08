@@ -70,11 +70,14 @@ export class TaskItemComponent {
   }
 
   editTheForm() {
-    if(this.editTask.title.trim()){
+    if (this.editTask.title?.trim()) {
       this.tasksService.updateEditTask(this.task().id, {
         title: this.editTask.title,
-        description: this.editTask.description
-      })
+        description: this.editTask.description,
+      });
+      this.isEditing = false; // Exit edit mode
+    } else {
+      console.error('Title is required');
     }
   }
 

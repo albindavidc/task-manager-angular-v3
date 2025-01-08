@@ -54,7 +54,7 @@ label {
 }
 
 .form-input:focus {
-  border-color: #667eea;
+  border-color: #555;
   outline: none;
 }
 
@@ -69,7 +69,7 @@ label {
 }
 
 .submit-button {
-  background-color: #667eea;
+  background-color: #c29e00;
   color: #fff;
   border: none;
   padding: 12px 20px;
@@ -81,7 +81,7 @@ label {
 }
 
 .submit-button:hover {
-  background-color: #555ac7;
+  background-color: #8f7605;
   transform: scale(1.05);
 }
 
@@ -98,14 +98,14 @@ label {
 .login-link {
   display: inline-block;
   margin-top: 15px;
-  color: #667eea;
+  color: #555;
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.3s ease;
 }
 
 .login-link:hover {
-  color: #555ac7;
+  color: #8d8046;
 }
 
 /* Animations */
