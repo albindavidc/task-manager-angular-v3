@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
+import { DisplayComponent } from '../display/display.component';
 
 @Component({
   selector: 'app-logic',
-  imports: [],
+  imports: [DisplayComponent],
   templateUrl: './logic.component.html',
   styleUrl: './logic.component.css',
 })
 export class LogicComponent {
   displayedValue: string = '0';
+  previousValue:string = '0';
   currentValue: number | null = null;
   operation: string | null = null;
   isNewInput: boolean = true;
@@ -34,6 +36,7 @@ export class LogicComponent {
       this.currentValue! /= currentNumber;
     }
 
+    this.previousValue =this.currentValue!.toString();
     this.displayedValue = this.currentValue!.toString();
   }
 

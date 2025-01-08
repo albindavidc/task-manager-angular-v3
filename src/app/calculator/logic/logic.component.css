@@ -1,0 +1,89 @@
+/* Buttons Container */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Rows for Buttons */
+.buttons .row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Buttons Style */
+.buttons button {
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #4caf50; /* Green background */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px #3e8e41;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Hover Effect for Buttons */
+.buttons button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+/* Active Button Style */
+.buttons button:active {
+  background-color: #367c39;
+  box-shadow: 0 2px #2c5c2d;
+  transform: translateY(2px);
+}
+
+/* Clear and Equals Buttons */
+.buttons button:nth-child(2), /* 'C' */
+  .buttons button:nth-child(3) /* '=' */ {
+  background-color: #f44336; /* Red background */
+}
+
+.buttons button:nth-child(2):hover, /* 'C' hover */
+  .buttons button:nth-child(3):hover /* '=' hover */ {
+  background-color: #e53935;
+}
+
+.buttons button:nth-child(2):active, /* 'C' active */
+  .buttons button:nth-child(3):active /* '=' active */ {
+  background-color: #d32f2f;
+}
+
+/* Operation Buttons */
+.buttons button:nth-child(4), /* '/' */
+  .buttons button:nth-child(8), /* '*' */
+  .buttons button:nth-child(12), /* '-' */
+  .buttons button:nth-child(16) /* '+' */ {
+  background-color: #ff9800; /* Orange background */
+}
+
+.buttons button:nth-child(4):hover,
+.buttons button:nth-child(8):hover,
+.buttons button:nth-child(12):hover,
+.buttons button:nth-child(16):hover {
+  background-color: #fb8c00;
+}
+
+.buttons button:nth-child(4):active,
+.buttons button:nth-child(8):active,
+.buttons button:nth-child(12):active,
+.buttons button:nth-child(16):active {
+  background-color: #f57c00;
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+  .buttons button {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+}

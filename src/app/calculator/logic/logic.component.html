@@ -1,1 +1,40 @@
-<p>logic works!</p>
+<div class="calculator">
+
+    <div class="display previous-display">
+        {{ previousValue || ' ' }}
+      </div>
+
+  <app-display
+    [value]="displayedValue"
+    (valueChange)="onDisplayValueChange($event)"
+  ></app-display>
+
+  <div class="buttons">
+    <div class="row">
+      <button (click)="onDigitClick('7')">7</button
+      ><button (click)="onDigitClick('8')">8</button
+      ><button (click)="onDigitClick('9')">9</button
+      ><button (click)="onOperationClick('/')">/</button>
+    </div>
+    <div class="row">
+      <button (click)="onDigitClick('4')">4</button
+      ><button (click)="onDigitClick('5')">5</button
+      ><button (click)="onDigitClick('6')">6</button
+      ><button (click)="onOperationClick('*')">x</button>
+    </div>
+
+    <div class="row">
+      <button (click)="onDigitClick('1')">1</button
+      ><button (click)="onDigitClick('2')">2</button
+      ><button (click)="onDigitClick('3')">3</button
+      ><button (click)="onOperationClick('-')">-</button>
+    </div>
+
+    <div class="row">
+      <button (click)="onDigitClick('0')">0</button
+      ><button (click)="onClear()">C</button
+      ><button (click)="onEqualsTo()">=</button
+      ><button (click)="onOperationClick('+')">+</button>
+    </div>
+  </div>
+</div>
