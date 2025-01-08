@@ -20,41 +20,41 @@
   font-size: 1.5rem;
   font-weight: bold;
   color: #fff;
-  background-color: #4caf50; /* Green background */
+  background-color: #000000; /* Green background */
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  box-shadow: 0 4px #3e8e41;
+  box-shadow: 0 4px #3f3f3f;
   transition: all 0.2s ease-in-out;
 }
 
 /* Hover Effect for Buttons */
 .buttons button:hover {
-  background-color: #45a049;
+  background-color: #000000;
   transform: scale(1.05);
 }
 
 /* Active Button Style */
 .buttons button:active {
-  background-color: #367c39;
-  box-shadow: 0 2px #2c5c2d;
+  background-color: #000000;
+  box-shadow: 0 2px #000000;
   transform: translateY(2px);
 }
 
 /* Clear and Equals Buttons */
 .buttons button:nth-child(2), /* 'C' */
   .buttons button:nth-child(3) /* '=' */ {
-  background-color: #f44336; /* Red background */
+  background-color: #000000; /* Red background */
 }
 
 .buttons button:nth-child(2):hover, /* 'C' hover */
   .buttons button:nth-child(3):hover /* '=' hover */ {
-  background-color: #e53935;
+  background-color: #000000;
 }
 
 .buttons button:nth-child(2):active, /* 'C' active */
   .buttons button:nth-child(3):active /* '=' active */ {
-  background-color: #d32f2f;
+  background-color: #000000;
 }
 
 /* Operation Buttons */
@@ -62,21 +62,21 @@
   .buttons button:nth-child(8), /* '*' */
   .buttons button:nth-child(12), /* '-' */
   .buttons button:nth-child(16) /* '+' */ {
-  background-color: #ff9800; /* Orange background */
+  background-color: #000000; /* Orange background */
 }
 
 .buttons button:nth-child(4):hover,
 .buttons button:nth-child(8):hover,
 .buttons button:nth-child(12):hover,
 .buttons button:nth-child(16):hover {
-  background-color: #fb8c00;
+  background-color: #000000;
 }
 
 .buttons button:nth-child(4):active,
 .buttons button:nth-child(8):active,
 .buttons button:nth-child(12):active,
 .buttons button:nth-child(16):active {
-  background-color: #f57c00;
+  background-color: #000000;
 }
 
 /* Responsive Design */
