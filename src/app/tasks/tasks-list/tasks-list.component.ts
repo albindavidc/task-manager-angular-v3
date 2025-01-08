@@ -47,13 +47,18 @@ export class TasksListComponent {
   /**
    * Search Feature
    */
+
+  filteredTask = computed(() => {
+    return this.tasksService.filteredTask();
+  });
+  
   onSearch(event: Event) {
     const query = (event.target as HTMLInputElement).value;
     this.searchQuery.set(query);
     this.tasksService.updateSearchQuery(query);
   }
 
-  onClear(){
+  onClear() {
     this.searchQuery.set('');
     this.tasksService.clearSearchQuery();
   }

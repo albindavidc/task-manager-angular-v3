@@ -63,10 +63,11 @@ export class TasksService {
       return tasks;
     }
 
-    return tasks.filter((task) => {
-      task.title.toLowerCase().includes(query) ||
-        task.description.toLowerCase().includes(query);
-    });
+    return tasks.filter(
+      (task) =>
+        task.title.toLowerCase().includes(query) ||
+        task.description.toLowerCase().includes(query)
+    );
   });
 
   updateSearchQuery(query: string) {
